@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Listener</title>
+</head>
+<body>
+  <h1 id="header"></h1>
+  <button id="my-button">Click!</button>
+  
+  <script>
+    const button = document.querySelector('#my-button')
+    // 사용자가 버튼을 눌렀을 때, 함수 실행시켜줘(;콜백함수)
+    button.addEventListener('click', () => {
+      console.log('>_<')
+    }) 
+  </script>
+  
+</body>
+</html>

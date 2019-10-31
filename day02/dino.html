@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .bg {
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <img
+        id="dino"
+        width="100px"
+        height="100px"
+        src="https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/88/e5/36/88e536d4-8a08-7c3b-ad29-c4e5dabc9f45/AppIcon-1x_U007emarketing-sRGB-85-220-0-6.png/246x0w.jpg"
+        alt="dino"
+      />
+    </div>
+      <div class="bg">
+          <img
+            id="dino"
+            width="100px"
+            height="100px"
+            src="https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/88/e5/36/88e536d4-8a08-7c3b-ad29-c4e5dabc9f45/AppIcon-1x_U007emarketing-sRGB-85-220-0-6.png/246x0w.jpg"
+            alt="dino"
+          />
+        </div>
+    <script>
+      // bg, dino 만 쳐도 코드 확인 가능
+      const bg = document.querySelector('div.bg')
+      const dino = bg.querySelector('#dino')
+
+      // 대상의 요소 삭제
+      // dino.remove()  // 대상 직접 삭제
+      // bg.firstElementChild.remove()  // 첫번째 자식 삭제 
+      // bg.lastElementChile.remove()  // 마지막 자식 삭제
+      // bg.removeChild(dino)  // 특정 자식 삭제
+
+
+    // 실습: body 에 자식 element 가 하나도 없을 때까지 자식 element를 삭제하는 코드 작성하기
+    // body = document.querySelector('body')
+    // while(body.firstElementChild !== null) {
+    //   body.firstElementChild.remove()  // document.body 도 가능
+    // }
+    
+
+    // 새로운 대상 요소 추가
+    // dino.remove()
+    // const newDino = document.createElement('img') // img 태그 만들게요
+    // newDino.id = 'newDino'
+    // newDino.src = 'https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/09/ChromeDino.png'
+    // newDino.alt = 'newDino'
+
+
+    // 대상에 요소 추가하기
+    // bg.appendChild(newDino)  // 가장 마지막에 추가
+    // 혹은
+    // bg.insertBefore(newDino, bg.firstElementChild)  // 가장 처음에 추가
+
+
+    // 이벤트리스너
+    // dino 클릭하면 >_< 출력
+    dino.addEventListener('click', () => {
+      console.log('>_<')
+      console.log(event)
+    }
+    )
+
+
+    let x = 0
+    let y = 0
+
+    // 문서 전체에 이벤트 리스너 적용하기
+    document.addEventListener('keydown', k => {
+      // 방향키를 눌렀을 때만 evert 출력할 수 있도록 조건문을 작성하세요
+      if ( k.key === 'ArrowUp') {
+        y += 1
+        console.log('위')
+        dino.style.marginBottom = `${20*y}px`
+      } else if ( k.key === 'ArrowDown') {
+        y -= 1
+        console.log('아래')
+        dino.style.marginBottom = `${20*y}px`
+      } else if ( k.key === 'ArrowRight') {
+        x -= 1
+        console.log('오른쪽')
+        dino.style.marginRight = `${20*x}px`
+      } else if (k.key === 'ArrowLeft') {
+        x += 1
+        console.log('왼쪽')
+        dino.style.marginRight = `${20*x}px`
+      }
+    })
+    
+    dino.style.position = 'absolute'
+    dino.addEventListener('mouseover', () =>{
+      // console.log('마우스 올라감')
+      const newWidth = window.innerWidth * Math.random()
+      const newHeight = window.innerHeight * Math.random()
+      dino.style.left = newWidth + 'px'
+      dino.style.top = newHeight + 'px'
+    })
+  
+  // f'{}' 쓰는 방법
+    let aaa =123
+    console.log(`${aaa}`)
+
+    </script>
+  </body>
+</html>
+

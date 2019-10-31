@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Shopping List</title>
+</head>
+<body>
+  <h1>My Shopping List</h1>
+  <div>
+    Enter a new item :
+    <input type="text">
+    <button id="button">Add item</button>
+  </div>
+  <ul>
+    <!-- <li>
+      바나나 
+    </li> -->
+  </ul>
+
+  <script>
+    const button = document.querySelector('button')
+    const items = document.querySelector('input')
+    const ul = document.querySelector('ul')
+    
+    // add item 누르면 추가되는 것
+    button.addEventListener('click', () => {
+      if(items.value !== '') {
+        const li = document.createElement('li')  // li 태그 만들기
+        li.innerText = items.value
+        ul.appendChild(li)
+        items.value = ''
+      }
+    })
+
+  </script>
+</body>
+</html>

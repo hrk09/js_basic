@@ -20,19 +20,39 @@
   </ul>
 
   <script>
-    const button = document.querySelector('button')
-    const items = document.querySelector('input')
+const button = document.querySelector('button')
+    const input = document.querySelector('input')
     const ul = document.querySelector('ul')
     
-    // add item 누르면 추가되는 것
+    // input에 내용을 넣고 add item 버튼 누르면 li 형태로 출력되는 코드 작성
+
     button.addEventListener('click', () => {
-      if(items.value !== '') {
-        const li = document.createElement('li')  // li 태그 만들기
-        li.innerText = items.value
-        ul.appendChild(li)
-        items.value = ''
+      
+      if(input.value !== '') {
+        const item = document.createElement('li')  // li 태그 만들기
+        
+        // input의 value 값을 가져오는 작업
+        item.innerText = input.value
+        ul.appendChild(item)
+        input.value = ''
+
+        // 삭제 버튼 만들기
+        const deleteButton = document.createElement('button')
+
+        // 삭제 버튼 안에 넣을 내용 넣기
+        deleteButton.innerText = '지울꺼야?'
+
+        // 삭제 버튼 눌렀을 때 item 삭제하기(해당 item 삭제까지 여기서 해결해야 함)
+        deleteButton.addEventListener('click', () => {
+          item.remove()
+          alert('지웠어ㅠㅠ')
+        })
+
+        // li 마다 삭제 버튼 넣어주기
+        item.appendChild(deleteButton)
       }
-    })
+  })
+
 
   </script>
 </body>

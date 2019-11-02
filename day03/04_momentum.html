@@ -19,15 +19,43 @@
     font-size: 100px;
     /* background-image: url('https://source.unsplash.com/1920x1080/?nature'); */
   }
+  #h11 {
+    color:azure;
+    font-size: 80px;
+  }
+  #region {
+    font-size: 30px;
+    color: darkslategrey;
+    text-align: right;
+    margin-right: 30px;
+  }
   </style>
 </head>
-<body>
-  <p id="datetime"></p>
 
+<body>
+  <p id="region"></h2>
+  <p id="datetime"></p>
+  <h1 id="h11">Hello</h1>
+  
+  <!-- <h2></h2> -->
   <script>
     // 1. Axios로 img url 가져온다
     const BG_API_URL = 'https://source.unsplash.com/1920x1080/?nature' 
+    const WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather?q=Seoul,KR&APPID=cb5b4ab8957d35f370cc1bdd030b1cca'
     
+    // 날씨
+    axios.get(WEATHER_API_URL)
+        .then(response => {
+          const city = response.data.name
+          const country = response.data.sys.country
+          const region = document.getElementById('region')
+          region.innerText = `${city}, ${country}`
+          const temperature = response.data.main.temp
+          region.innerText = `${city}, ${country}\n ${parseInt(temperature)-273}°C `
+        
+        })
+
+
     // const getImg = function() {
       axios.get(BG_API_URL)
         .then(response => {

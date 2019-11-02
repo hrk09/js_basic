@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Get Random DOG&Cat Imgs</title>
+    <style>
+      h1 {
+        color: darkslategray;
+        text-align: center;
+      }
+    </style>
+</head>
+
+<body>
+  <h1>Get Random Dog&Cat Images!</h1>
+  <button id="dog-img-btn">Give me a Dog Img:)</button>
+  <button id="cat-img-btn">Give me a Cat Img:)</button>
+  <div id="dogs_n_cats"></div>
+
+<script>
+  const DOG_API_URL = 'https://dog.ceo/api/breeds/image/random'
+  const CAT_API_URL = 'https://api.thecatapi.com/v1/images/search'
+  const dogNCatImgList = document.getElementById('dogs_n_cats')
+
+  const getDogImg = () => {
+    axios.get(DOG_API_URL)
+    .then((response) => {
+      // console.log(response)
+      const dogImgUrl = response.data.message
+      // console.log(dogImgUrl)
+      const dogImg = document.createElement('img')
+      dogImg.src = dogImgUrl
+      dogImg.alt = 'dog'
+      dogImg.width = 200
+      dogImg.height = 200
+      dogNCatImgList.appendChild(dogImg)
+    })
+  }
+
+  const getCatImg = () => {
+    axios.get(CAT_API_URL)
+    .then((response) => {
+    // console.log(response)
+    const catImgUrl = response.data[0].url
+    // console.log(catImgUrl)
+    const catImg = document.createElement('img')
+    catImg.src = catImgUrl
+    catImg.alt = 'cat'
+    catImg.width = 200
+    catImg.height = 200
+    dogNCatImgList.appendChild(catImg)
+  })
+}
+
+  const dogImgBtn = document.querySelector('#dog-img-btn')
+  dogImgBtn.addEventListener('click', getDogImg)
+  const catImgBtn = document.querySelector('#cat-img-btn')
+  catImgBtn.addEventListener('click', getCatImg)
+
+</script>
+</body>
+</html>
